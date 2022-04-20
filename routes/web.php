@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AssignmentsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,7 +23,9 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dashboard',[AssignmentsController::class, 'index'])->name('dashboard');
+    Route::get('/assignment',[AssignmentsController::class, 'add']);
 });
+
+// To Do: Assignments index, add, create, edit, update routes
+
